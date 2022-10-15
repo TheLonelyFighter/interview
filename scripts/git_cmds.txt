@@ -1,0 +1,14 @@
+git init # initialize a new git local repo
+git commit -m "say what you modified" # commit the changes to local repo
+git push # update the local repo with last commit
+git fetch # download the latest changes from remote repo, but do not update local repo
+git pull = git fetch + git merge origin/ master 
+git pull # update the local repo with the latest remote changes, also merges changes automatically
+git revert <commit id> # go back to previous commit
+
+git stash # save current local repo changes without commit
+          # useful when wanting to switch to different branch without commiting
+git stash pop # retrieve changes saved to stash
+
+
+git checkout -b <your_branch> #  create and switch to a different branch

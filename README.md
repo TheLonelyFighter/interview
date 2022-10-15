@@ -6,4 +6,6 @@
 2. Data structures
 3. Algorithms
 4. Commonly used libraries
+5. git basics
+   
    
