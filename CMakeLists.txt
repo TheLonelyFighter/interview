@@ -9,4 +9,5 @@ add_executable(hello_world src/hello_world.cpp)
 add_executable(string_processing src/string_processing.cpp src/utils.h src/utils.cpp)
 add_executable(vector_list src/vector_list.cpp)
 add_executable(class_example src/class_example.cpp)
+add_executable(football src/football.cpp)
 #target_link_libraries(string_processing 
