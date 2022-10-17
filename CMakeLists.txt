@@ -10,4 +10,5 @@ add_executable(string_processing src/string_processing.cpp src/utils.h src/utils
 add_executable(vector_list src/vector_list.cpp)
 add_executable(class_example src/class_example.cpp)
 add_executable(football src/football.cpp)
+add_executable(factorial src/factorial.cpp)
 #target_link_libraries(string_processing 
