@@ -12,5 +12,7 @@ add_compile_options(-std=c++11)
 # add_executable(class_example src/class_example.cpp)
 # add_executable(football src/football.cpp)
 # add_executable(factorial src/factorial.cpp)
-add_executable(smart_pointers src/smart_pointers.cpp)
+# add_executable(smart_pointers src/smart_pointers.cpp)
+add_executable(sets src/sets.cpp)
+add_executable(football_maps src/football_maps.cpp)
 #target_link_libraries(string_processing 
