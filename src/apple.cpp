@@ -1,6 +1,7 @@
 #include<iostream>
 #include<vector>
 #include<array>
+#include<sstream>
 
 
 #define MAX_ELEMS 26
@@ -15,8 +16,6 @@ class Words {
     }
 };
 
-
-
 void delete_word(std::array<Words, MAX_ELEMS> &words, std::string key) {
     for (auto& i : words) {
         if (i.word == key) {
@@ -29,8 +28,7 @@ void delete_word(std::array<Words, MAX_ELEMS> &words, std::string key) {
 }
 
 int search_word(std::array<Words, MAX_ELEMS> &words, std::string key) {
-    char letter = key.back();
-    int index = (int) (letter - 'a');
+    int index = (int) (key.back() - 'a');
     if (words[index].word == key && words[index].status == 2) {
             std::cout << "Found " << key << std::endl;
             return index;
@@ -81,74 +79,49 @@ int insert_word(std::array<Words, MAX_ELEMS> &words, std::string key) {
 
 void read_input(std::array<Words, MAX_ELEMS> &words)
 {
+    std::vector<std::string> words_in_line;
+    words_in_line.reserve(MAX_ELEMS);
     std::string line; 
 
     //read line
-    std::getline(std::cin, line);
+    getline(std::cin, line);
+    std::stringstream ss(line);
 
-    std::vector<std::string> words_in_line;
-    words_in_line.reserve(MAX_ELEMS);
-
-    // Split the line into words
-    std::string word = "";
-    for (auto x : line)
-    {
-        if (x == ' ')
-        {
-            words_in_line.emplace_back(word);
-            word = "";
-        }
-        else {
-            word = word + x;
-        }
-    }
-    words_in_line.emplace_back(word);
-
-    // Process the words
-    for(auto& i : words_in_line) {   
-
-        char action = i[0];
-        std::string word = i.substr(1, i.size() - 1);
-        //if action valid then insert or delete word
-         std::cout << "Action: " << action << " Word: " << word << std::endl;
-
-        if (action == 'A') {
+     // Split the line into words
+    while(ss.good()) {
+        std::string token;
+        ss >> token;
+        std::string word = token.substr(1); // remove the first character
+        
+        if (token[0] == 'A') {
             insert_word(words, word);
-        } else if (action == 'D') {
+        } else if (token[0] == 'D') {
             delete_word(words, word);
         }
           else {
             std::cout << "Invalid action" << std::endl;
-        }                      
-    }  
+        } 
+    }
 }
-
 
 int main() {
 
-    
-    const std::size_t max_elements = 26; //our array can contain maximum 26 elements
     std::array<Words,MAX_ELEMS> wordmap;
     std::string example_key = "apple";
 
-    for (int i = 0; i < max_elements; i++) {
-        char letter = 'a' + i;
-        Words word = Words("initial", 0);
+    // initialize the wordmap
+    for (int i = 0; i < MAX_ELEMS; i++) {
+        Words word = Words();
         wordmap[i] = word;
     }
-    
-    // initialize the wordmap
-    for (auto& i : wordmap) {
-        std::cout << i.word << " " <<  int (i.status) << std::endl;
-    }
-    
+
     read_input(wordmap);
 
     // output all entries with "occupied" status
     std::cout << "Output all entries with occupied status" << std::endl;
     for (auto& i : wordmap) {
         if (i.status == 2) {
-            std::cout << i.word << " " <<  int (i.status) << std::endl;
+            std::cout << i.word << " ";
         }
     }
 
