@@ -13,6 +13,7 @@ add_compile_options(-std=c++14 -g) # -g for debug
 # add_executable(football src/football.cpp)
 # add_executable(factorial src/factorial.cpp)
 # add_executable(smart_pointers src/smart_pointers.cpp)
-add_executable(apple src/apple.cpp)
+# add_executable(apple src/apple.cpp)
+add_executable(thief src/thief.cpp)
 #add_executable(football_maps src/football_maps.cpp)
 #target_link_libraries(string_processing 
