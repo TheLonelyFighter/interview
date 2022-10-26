@@ -15,10 +15,25 @@ Write the code that will take a string and make this conversion given a number o
 
 int main () {
     char string[] = "PAYPALISHIRING";
-    const uint rows = 4;
+    const uint rows = 5;
     const uint string_size = sizeof(string) / sizeof(char);
     const uint columns = 1000; 
     char m[rows][columns];
+
+    int j = 2;
+    int index = 0;
+    for(int i = 0; i < rows; i++) {
+
+        std::cout << string[i];
+        
+        index  =  j * (rows - 1) * i;
+        if (index < string_size) {
+            std::cout << string[index];
+            j++;
+        }
+    }
+
+    return 0;
 
     for (int i = 0; i < rows; i++) 
         for (int j = 0; j < columns; j++) 
