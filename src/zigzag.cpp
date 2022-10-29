@@ -20,8 +20,6 @@ int main () {
     const uint columns = 1000; 
     char m[rows][columns];
 
-    int j = 2;
-    int index = 0;
     std::string result = "";
 
     // Efficient solution, time = O(n), space = O(1)
@@ -29,7 +27,7 @@ int main () {
     {
         int i = rowNum;
         bool up = true;
-        // Iterate i till s.length() - 1
+        // Iterate i till string.length() - 1
         while (i < string_size)
         {
  
@@ -63,7 +61,7 @@ int main () {
         for (int j = 0; j < columns; j++) 
             m[i][j] = ' ';
 
-    index = 0;
+    int index = 0;
     for (int i = 0; i < columns; ++i) {
         for (int j = 0; j < rows; ++j) {
             if (index < string_size) {
