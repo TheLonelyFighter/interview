@@ -22,24 +22,48 @@ int main () {
 
     int j = 2;
     int index = 0;
-    for(int i = 0; i < rows; i++) {
+    std::string result = "";
 
-        std::cout << string[i];
-        
-        index  =  j * (rows - 1) * i;
-        if (index < string_size) {
-            std::cout << string[index];
-            j++;
+    // Efficient solution, time = O(n), space = O(1)
+    for (int rowNum = 0; rowNum < rows; rowNum++)
+    {
+        int i = rowNum;
+        bool up = true;
+        // Iterate i till s.length() - 1
+        while (i < string_size)
+        {
+ 
+            result += string[i];
+ 
+            // Check is rowNum is 0 or n - 1
+            if (rowNum == 0 || rowNum == rows - 1)
+            {
+                i += (2 * rows - 2);
+            }
+            else
+            {
+                if (up)
+                {
+                    i += (2 * (rows - rowNum) - 2);
+                }
+                else
+                {
+                    i += rowNum * 2;
+                }
+                up ^= true;
+            }
         }
     }
+    std::cout<<result<<std::endl;
 
     return 0;
 
+    //intuitive, inefficient solution, time = O(n^2), space = O(n^2)
     for (int i = 0; i < rows; i++) 
         for (int j = 0; j < columns; j++) 
             m[i][j] = ' ';
 
-    int index = 0;
+    index = 0;
     for (int i = 0; i < columns; ++i) {
         for (int j = 0; j < rows; ++j) {
             if (index < string_size) {
